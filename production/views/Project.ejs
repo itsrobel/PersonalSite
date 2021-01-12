@@ -1,0 +1,64 @@
+<%- include('partials/navbar') %> 
+<div>
+<section style="padding: 8rem 0px;">
+        <div class="container">
+            <% if(project) { %>
+            <div class="row" style="margin: 1rem;">
+                <div class="col" style="box-shadow: 0px 0px var(--gray);">
+                    <div class="card" style="background: #181727;border-color: #c9a66f;">
+                        <div class="card-body">
+                            <h4 id="title" class="card-title" style="color: #c9a66f;">Title</h4>
+                            <div class="carousel slide" data-ride="carousel" id="carousel-1">
+                                <div id="renderCode" class="carousel-inner">
+                                    <div id="gistZone"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card mt-2" style="background: #181727;border-color: #c9a66f;">
+                        <div class="card-body">
+                            <h4  class="card-title" style="color: #c9a66f;">description</h4>
+                            <p id="des"></p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <% } else { %>
+                <h1>Project can no be rendered</h1>
+            <% } %>
+        </div>
+</section>
+<script>
+    const project = "<%= project %>"
+    let index = {
+        project 
+    }
+    if (project) {
+        let response =fetch('/projectData', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(index)
+        })
+        .then(response => response.json())
+        .then(gist => {
+            let zone = document.getElementById("gistZone");
+            let title = document.getElementById("title")
+            let des = document.getElementById("des")
+			zone.innerHTML = gist.div;
+            title.innerHTML = gist.files[0]; 
+            title.innerHTML = gist.description
+            })
+     }
+	function adjustIframeSize(newHeight) {
+		var i = document.getElementById("gistFrame");
+		i.style.height = parseInt(newHeight) + "px";
+		console.log("size adjusted", newHeight);
+    }
+    
+</script>
+</div> 
+
+

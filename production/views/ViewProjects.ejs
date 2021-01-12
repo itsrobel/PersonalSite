@@ -1,0 +1,22 @@
+<%- include('partials/navbar') %>
+<body style="background: url('img/81569.jpg') center / cover repeat-y; justify-content: center;">
+	<section style="padding-top: 7rem;" >
+		<div class="container">
+			<% if(projects) { %>
+				<form action="/project" method="POST"  >
+					<div  style=" display: flex; flex-direction: column;align-items: center;">
+						<% projects.forEach((project ,i) => { %>
+							
+							<button id="<%= project.link %>" name="project" value="<%= i %>" type="submit" class="m-3" style="border-radius: 1rem ;background: #181727;" >
+								<h3 style="color: #c9a66f;"><%= project.name %> </h3>
+								<img class="img-fluid" src="/img/78882.jpg" style="border-radius: 1rem;max-width: 18rem; max-height:20rem ;">
+							</button>
+						<% }) %>
+					</div>
+				</form>
+			<% } else {  %>
+				<h1>No Projects Found</h1>
+			<% } %>
+		</div>
+	</section>
+</body>

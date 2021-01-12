@@ -1,0 +1,18 @@
+<%- include('partials/navbar') %>
+<body style="background: url('img/81569.jpg') center / cover repeat-y; justify-content: center;">
+    <section style="padding-top: 7rem;">
+        <div class="container">
+            <div class="row">
+                <div class="col" style="box-shadow: 0.5rem 0.5rem 8px 0px var(--gray);">
+                    <form action="/contact" method="POST" style="background: #181727;padding: 2rem;">
+                        <h2 class="text-center" style="color: #c9a66f;">contact me</h2>
+                        <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+                        <div class="form-group"><input class="form-control is-invalid" type="email" name="email" placeholder="Email"><small class="form-text text-danger">Please enter a correct email address.</small></div>
+                        <div class="form-group"><textarea class="form-control" name="message" placeholder="Message" rows="10"></textarea></div>
+                        <div class="form-group"><button class="btn btn-primary" type="button">Button</button></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<body/>
